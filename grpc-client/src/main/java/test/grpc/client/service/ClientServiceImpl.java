@@ -2,18 +2,20 @@ package test.grpc.client.service;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import net.devh.boot.grpc.examples.lib.HelloRequest;
+import net.devh.boot.grpc.examples.lib.MyServiceGrpc;
 import net.devh.boot.grpc.examples.lib.MyServiceGrpc.MyServiceBlockingStub;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ClientServiceImpl implements CommandLineRunner {
 
-  @GrpcClient("myService")
   MyServiceBlockingStub myServiceStub;
 
   public void receiveGreeting(String name) {
