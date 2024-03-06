@@ -1,0 +1,1 @@
+This small project-example can help you get easy start with using gRPC
